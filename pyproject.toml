@@ -1,0 +1,42 @@
+[project]
+name = "dibble"
+version = "0.1.0"
+description = "Add your description here"
+requires-python = ">=3.12"
+dependencies = []
+
+[project.optional-dependencies]
+dev = [
+    "playwright>=1.40.0",
+    "pytest>=7.4.0",
+    "pytest-playwright>=0.4.0",
+    "ruff>=0.1.0",
+    "pre-commit>=3.0.0",
+]
+
+[tool.ruff]
+# Enable formatting, linting, and import sorting
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.format]
+# Use double quotes for strings
+quote-style = "double"
+# Use spaces for indentation
+indent-style = "space"
+# Respect magic trailing commas
+skip-magic-trailing-comma = false
+# Automatically detect the appropriate line ending
+line-ending = "auto"
+
+[tool.ruff.lint]
+# Enable all error codes
+select = ["E", "F", "I", "N", "W", "UP"]
+# Ignore specific rules if needed
+ignore = []
+
+[tool.ruff.lint.isort]
+# Configure import sorting
+known-first-party = ["tests"]
+force-sort-within-sections = true
+split-on-trailing-comma = true

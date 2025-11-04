@@ -1,0 +1,55 @@
+# Rustfmt configuration
+# Standard Rust style guide settings
+
+# Maximum width for each line
+max_width = 100
+
+# Use spaces for indentation
+use_tabs = false
+
+# Number of spaces per tab
+tab_spaces = 4
+
+# Use Unix-style line endings
+newline_style = "Unix"
+
+# Format code in edition 2021 style
+edition = "2021"
+
+# Format macro definitions
+format_macro_matchers = true
+format_macro_bodies = true
+
+# Format string literals where applicable
+format_strings = true
+
+# Reorder imports
+reorder_imports = true
+reorder_modules = true
+
+# Use trailing commas
+trailing_comma = "Vertical"
+
+# Use block indent style
+indent_style = "Block"
+
+# Spacing around binary operators
+use_small_heuristics = "Default"
+
+# Brace style
+brace_style = "SameLineWhere"
+
+# Chain formatting
+chain_width = 80
+
+# Single line if-else
+single_line_if_else = false
+
+# Wrap comments
+wrap_comments = true
+
+# Normalize comments
+normalize_comments = true
+
+# Format doc comments
+format_code_in_doc_comments = true
