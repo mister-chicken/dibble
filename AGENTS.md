@@ -263,3 +263,57 @@ The initial UI rendered by the component on the client must be identical to the 
 
 * Use the `use_server_future` hook instead of `use_resource`. It runs the future on the server, serializes the result, and sends it to the client, ensuring the client has the data immediately for its first render.
 * Any code that relies on browser-specific APIs (like accessing `localStorage`) must be run *after* hydration. Place this code inside a `use_effect` hook.
+
+# E2E Testing
+
+This project uses Python and Playwright for end-to-end integration tests. All test code is located in the `tests/` directory.
+
+## Test Structure
+
+* `tests/__init__.py` - Makes tests a Python package
+* `tests/conftest.py` - Shared Playwright fixtures (browser setup, base URL configuration)
+* `tests/test_dioxus_app.py` - Validation tests that verify the Dioxus app is working correctly
+* `tests/test_example.py` - Example tests demonstrating Playwright usage patterns
+
+## Running Tests
+
+Before running tests, ensure the Dioxus server is running:
+
+```bash
+dx serve --platform web
+```
+
+Then in another terminal, run the test suite:
+
+```bash
+uv run pytest tests/
+```
+
+To run a specific test file:
+
+```bash
+uv run pytest tests/test_dioxus_app.py
+```
+
+## Testing Workflow
+
+When implementing new features or making changes:
+
+1. **Always run e2e tests after implementation** - The tests validate that the core Dioxus app functionality is working:
+   - Home page loads and displays content
+   - Navigation between routes works
+   - App is fully hydrated and interactive
+   - Routing system works end-to-end
+
+2. **Ensure tests pass before considering work complete** - If tests fail, investigate and fix issues before proceeding.
+
+3. **Update tests when adding new features** - Add new test cases in `tests/test_dioxus_app.py` or create new test files as needed.
+
+4. **Test isolation** - All Python test code is isolated in the `tests/` directory. The main application code remains in Rust.
+
+## Test Commands
+
+* Run all tests: `uv run pytest tests/`
+* Run with verbose output: `uv run pytest tests/ -v`
+* Run specific test: `uv run pytest tests/test_dioxus_app.py::test_home_page_loads_and_displays_content`
+* Run tests in headless mode (default): Tests run headless by default with Playwright

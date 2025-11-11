@@ -1,0 +1,51 @@
+# Cursor Rules for Dibble Project
+
+## E2E Testing Workflow
+
+After implementing any new feature or making significant changes to the Dioxus application:
+
+1. **Always run e2e tests to validate the changes** - Use the following command:
+   ```bash
+   uv run pytest tests/
+   ```
+
+2. **Ensure all tests pass before considering work complete** - If tests fail:
+   - Investigate the failure
+   - Fix any issues introduced by the changes
+   - Re-run tests to confirm fixes
+
+3. **Update tests when adding new features** - When adding new functionality:
+   - Add corresponding test cases in `tests/test_dioxus_app.py` or create new test files
+   - Ensure new features are properly validated
+
+4. **Test execution requirements**:
+   - The Dioxus server must be running before tests: `dx serve --platform web`
+   - Tests are located in the `tests/` directory
+   - All Python test code is isolated in the `tests/` directory
+
+## Testing Command
+
+The standard command to run all e2e tests is:
+```bash
+uv run pytest tests/
+```
+
+To run with verbose output:
+```bash
+uv run pytest tests/ -v
+```
+
+To run a specific test file:
+```bash
+uv run pytest tests/test_dioxus_app.py
+```
+
+## Test Validation
+
+The e2e tests validate:
+- Home page loads and displays content
+- Navigation between routes works
+- App is fully hydrated and interactive
+- Routing system works end-to-end
+
+All tests must pass before marking any feature implementation as complete.
