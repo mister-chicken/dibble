@@ -2,17 +2,21 @@
 //! enum will render one of these components.
 //!
 //!
-//! The [`Home`] and [`Blog`] components will be rendered when the current route is [`Route::Home`] or [`Route::Blog`] respectively.
+//! The [`MapView`], [`AccountView`], and [`SocialFeedView`] components will be rendered when the current route matches
+//! their respective route variants.
 //!
 //!
-//! The [`Navbar`] component will be rendered on all pages of our app since every page is under the layout. The layout defines
-//! a common wrapper around all child routes.
+//! The [`BottomTabLayout`] component will be rendered on all pages of our app since every page is under the layout. The layout defines
+//! a common wrapper around all child routes with a bottom tab bar navigation.
 
-mod home;
-pub use home::Home;
+mod bottom_tab_layout;
+pub use bottom_tab_layout::BottomTabLayout;
 
-mod blog;
-pub use blog::Blog;
+mod map_view;
+pub use map_view::MapView;
 
-mod navbar;
-pub use navbar::Navbar;
+mod account_view;
+pub use account_view::AccountView;
+
+mod social_feed_view;
+pub use social_feed_view::SocialFeedView;
